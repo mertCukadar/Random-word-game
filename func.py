@@ -1,64 +1,22 @@
 import random
 import requests
 
-class Generate:
-
-    # This function creates a random array
-
-    def create_random_array(total , end):
-        array = []
-        for i in range(total):
-            random_number = random.randint(1 , end-1)
-            if array.count(random_number) == 0:
-                array.append(random_number)
-            else:
-                while array.count(random_number) != 0:
-                    random_number = random.randint(1 , end-1)
-                array.append(random_number)
-        array.sort()
-        return array
-    
-
-
-    # This function creates a secret word and stared letters
-    def star_latter(word , array):
-        stared_letters = []
-        for index in array:
-            stared_letters.append(word[index])
-            word[index] = "*"
-            secret_word = "".join(word)
-        return secret_word , stared_letters
-
-
-
-
-
 class Game:
 
     # given word method
-    def word_input():
+    def word_input(self, word):
         letter_array = []
-        input_word = input("Enter a word: ")
-        for letter in input_word:
+        for letter in word:
             letter_array.append(letter)
 
-        len_word = len(input_word)
-        return letter_array , len_word
-
-
-
-
-
-
-
+        len_word = len(word)
+        return letter_array, len_word
 
     # This function estimates the word
-    def estimate_word(word , array , stared_letters , secret_word):
-        
-
+    def estimate_word(self, stared_letters, secret_word):
         is_win = False
-        print("secret word is: " , secret_word)
-        while is_win == False:
+        print("secret word is:", secret_word)
+        while not is_win:
             guess = input("Enter missed letters: ")
             list_guess = []
             for letter in guess:
@@ -69,12 +27,10 @@ class Game:
                 is_win = True
             else:
                 print("You lose")
-               
-            
 
 
-    
 class Web_Generate:
+
     def Random_word_api_func(self):
         url = "https://random-word-api.herokuapp.com/word?number=1"
         response = requests.get(url)

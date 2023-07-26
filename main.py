@@ -2,13 +2,16 @@ from func import Game , Generate
 
 
 
-
 if __name__ == "__main__":
-    word , len_word = Game.word_input()
-    array = Generate.create_random_array(3 , len_word)
-    secret_word , stared_letters = Generate.star_latter(word , array)
+    game = Game()
+    generate = Generate()
 
-
-    Game.estimate_word(word , array , stared_letters ,secret_word)
-
+   
+    word = generate.Random_word_api_func()
+    latter_array, len_word = game.word_input(word)
+    random_array = generate.create_random_array(len_word, len_word - 1) 
     
+    
+    
+    secret_word, stared_letters = generate.star_latter(word, random_array)
+    game.estimate_word(stared_letters, secret_word)
