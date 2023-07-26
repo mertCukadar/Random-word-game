@@ -99,3 +99,13 @@ class Generate(Web_Generate):
         array.sort()
         return array
 
+    # This function creates a secret word and stared letters
+    def star_latter(self, word, array):
+        stared_letters = []
+        for index in array:
+            stared_letters.append(word[index])
+        secret_word = list(word)  # To keep the original word intact
+        for index in array:
+            secret_word[index] = "*"
+        secret_word = "".join(secret_word)
+        return secret_word, stared_letters
