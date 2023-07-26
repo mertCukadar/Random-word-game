@@ -1,9 +1,10 @@
 import random
 
 
-class Deneme:
+class Generate:
 
-# This function creates a random array
+    # This function creates a random array
+
     def create_random_array(total , end):
         array = []
         for i in range(total):
@@ -16,7 +17,23 @@ class Deneme:
                 array.append(random_number)
         array.sort()
         return array
+    
 
+
+    # This function creates a secret word and stared letters
+    def star_latter(word , array):
+        stared_letters = []
+        for index in array:
+            stared_letters.append(word[index])
+            word[index] = "*"
+            secret_word = "".join(word)
+        return secret_word , stared_letters
+
+
+
+
+
+class Game:
 
     # given word method
     def word_input():
@@ -33,18 +50,9 @@ class Deneme:
 
 
 
-    def star_latter(word , array):
-        stared_letters = []
-        for index in array:
-            stared_letters.append(word[index])
-            word[index] = "*"
-            secret_word = "".join(word)
-
-        return secret_word , stared_letters
 
 
-
-
+    # This function estimates the word
     def estimate_word(word , array , stared_letters , secret_word):
         
 
@@ -65,6 +73,9 @@ class Deneme:
             
 
 
+    
+class Web_Generate:
+    pass
 
        
      
