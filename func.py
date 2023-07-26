@@ -75,8 +75,16 @@ class Game:
 
     
 class Web_Generate:
-    pass
+    def Random_word_api_func(self):
+        url = "https://random-word-api.herokuapp.com/word?number=1"
+        response = requests.get(url)
+        word = response.json()
+        return word[0]
 
+
+class Generate(Web_Generate):
+
+    # This function creates a random array
     def create_random_array(self, total_len, end):
         array = []
         for i in range(total_len):
