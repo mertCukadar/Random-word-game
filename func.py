@@ -77,5 +77,17 @@ class Game:
 class Web_Generate:
     pass
 
-       
-     
+    def create_random_array(self, total_len, end):
+        array = []
+        for i in range(total_len):
+            random_number = random.randint(1, end - 1)
+            if random_number not in array:
+                array.append(random_number)
+            else:
+                while random_number in array:
+                    random_number = random.randint(1, end - 1)
+                array.append(random_number)
+                break
+        array.sort()
+        return array
+
